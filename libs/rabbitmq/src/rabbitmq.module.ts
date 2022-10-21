@@ -22,7 +22,7 @@ export class RabbitmqModule {
               useFactory: (configService: ConfigService) => ({
                 transport: Transport.RMQ,
                 options: {
-                  url: [configService.get<string>('RABBIT_URL')],
+                  url: [configService.get<string>('RABBIT_URI')],
                   queue: configService.get<string>(`RABBIT_${name}_QUEUE`),
                 },
               }),
