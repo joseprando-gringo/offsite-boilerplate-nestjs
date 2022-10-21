@@ -23,6 +23,18 @@
       ],
       "@core/core/*": [
         "libs/core/src/*"
+      ],
+      "@core/prisma": [
+        "libs/prisma/src"
+      ],
+      "@core/prisma/*": [
+        "libs/prisma/src/*"
+      ],
+      "@core/rabbitmq": [
+        "libs/rabbitmq/src"
+      ],
+      "@core/rabbitmq/*": [
+        "libs/rabbitmq/src/*"
       ]
     }
   }

@@ -1,16 +1,16 @@
-import { CoreService } from '@core/core';
-import { Controller, Get } from '@nestjs/common';
+import {Controller, Get, Param} from '@nestjs/common';
 import { ApiService } from './api.service';
 
-@Controller()
+@Controller('vehicle')
 export class ApiController {
   constructor(
-    private readonly apiService: ApiService,
-    private readonly coreService: CoreService) {}
+    private readonly apiService: ApiService
+  ) {}
 
-  @Get()
-  getHello(): string {
-    return this.coreService.sayHello();
-    // return this.apiService.getHello();
+  @Get('plate/:plateNumber')
+  async getHello(@Param() params: { plateNumber: string }): Promise<any> {
+    const plateNumber = params.plateNumber
+    return this.apiService.getVehicle({ plate: plateNumber});
+
   }
 }
