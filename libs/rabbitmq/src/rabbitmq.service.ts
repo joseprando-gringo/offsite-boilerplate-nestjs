@@ -7,10 +7,12 @@ export class RabbitmqService {
     constructor(private readonly configService: ConfigService) {}
 
     getOptions(queue: string, noAck = false): RmqOptions {
+        console.log(this.configService.get<string>('RABBIT_URI'))
         return {
             transport: Transport.RMQ,
             options: {
-                urls: [this.configService.get<string>('RABBIT_URI')],
+                // urls: [this.configService.get<string>('RABBIT_URI')],
+                urls: ['amqp://admin:admin@localhost:5672'],
                 queue: this.configService.get<string>(`RABBIT_${queue}_QUEUE`),
                 noAck,
                 persistent: true,
